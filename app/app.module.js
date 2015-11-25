@@ -4,7 +4,8 @@
             'ngMaterial',
             'ngMdIcons',
             'ui.router',
-            'football.controllers'
+            'football.controllers',
+            'ngFileUpload'
         ])
         .constant("server_host", "http://localhost:8000")
         .config(function ($stateProvider, $urlRouterProvider) {

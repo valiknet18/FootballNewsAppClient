@@ -16,7 +16,14 @@
                 controller: 'CreateCommandCtrl',
                 templateUrl: 'components/commands/create-command.html',
                 targetEvent: ev
-            });
+            })
+                .then(function (answer) {
+                    console.log(answer)
+                }, function () {
+
+                })
+            ;
+
         }
     }
 })();
