@@ -67,10 +67,22 @@ div.right {
     margin-left: 10px;
 }
 
-div.text {
-    margin-left: 65px;
+div.text-command {
+    margin-left: 60px;
+}
+
+div.text-member {
+    margin-left: 100px;
 }
 
 img.image {
     width: 80px;
+}
+
+.clearfix {
+    clear: both;
+}
+
+md-content.command, md-content.member {
+    margin-top: 10px;
 }
