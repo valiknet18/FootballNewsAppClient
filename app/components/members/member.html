@@ -1,0 +1,30 @@
+<md-card flex-gt-sm="90" flex-gt-md="80">
+    <md-card-content>
+        <div>
+            <md-card-header>
+                <md-card-avatar>
+                    <img ng-src="{{ member.photo }}" class="md-user-avatar image" />
+                </md-card-avatar>
+                <md-card-header-text>
+                    <span class="md-title">{{ member.full_name }}</span>
+                </md-card-header-text>
+            </md-card-header>
+        </div>
+
+        <div>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-subhead link" ng-click="go('command', member.command.id)">Команда: {{ member.command.title }}</span>
+                </md-card-title-text>
+            </md-card-title>
+        </div>
+
+        <div>
+            Дата народження: {{ member.birthday }}
+        </div>
+
+        <p>
+            {{ member.description }}
+        </p>
+    </md-card-content>
+</md-card>

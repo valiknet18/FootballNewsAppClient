@@ -1,21 +1,21 @@
 (function () {
     angular
-        .module('football.controller.members')
-        .controller('MemberCtrl', MemberCtrl)
+        .module('football.controller.tags')
+        .controller('TagCtrl', TagCtrl)
     ;
 
-    MemberCtrl.$inject = [
+    TagCtrl.$inject = [
         '$scope',
         '$state',
         '$stateParams',
-        'MembersUtils'
+        'TagsUtils'
     ];
 
-    function MemberCtrl($scope, $state, $stateParams, MembersUtils) {
-        MembersUtils
+    function TagCtrl ($scope, $state, $stateParams, TagsUtils) {
+        TagsUtils
             .get($stateParams.id)
             .then(function (response) {
-                $scope.member = response.data;
+                $scope.tag = response.data;
             }, function (error) {
 
             })

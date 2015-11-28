@@ -53,3 +53,24 @@ md-sidenav md-list md-list-item a {
     bottom: 55px;
     right: 55px;
 }
+
+h3.link, span.link {
+    cursor: pointer;
+}
+
+div.left {
+    float: left;
+}
+
+div.right {
+    float: right;
+    margin-left: 10px;
+}
+
+div.text {
+    margin-left: 65px;
+}
+
+img.image {
+    width: 80px;
+}

@@ -6,11 +6,21 @@
 
     MembersCtrl.$inject = [
         '$scope',
-        '$ngModel',
-        '$mdDialog'
+        '$state',
+        '$mdDialog',
+        'MembersUtils'
     ];
 
-    function MembersCtrl($scope, $ngModel, $mdDialog) {
+    function MembersCtrl($scope, $state, $mdDialog, MembersUtils) {
+        MembersUtils
+            .all()
+            .then(function (response) {
+                $scope.members = response.data.data
+            }, function (error) {
+
+            })
+        ;
+
         $scope.showModal = function (ev) {
             $mdDialog.show({
                     controller: 'CreateMemberCtrl',
@@ -24,6 +34,10 @@
                 })
             ;
 
-        }
+        };
+
+        $scope.go = function (state, id) {
+            $state.go(state, {id: id});
+        };
     }
 })();

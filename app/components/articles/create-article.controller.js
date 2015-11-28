@@ -23,7 +23,16 @@
         };
 
         $scope.answer = function(answer) {
-            $mdDialog.hide(answer);
+            ArticlesUtils
+                .create(answer)
+                .then(function () {
+                    $mdDialog.hide(answer);
+
+                    alert('Стаття успішно створена!')
+                }, function (){
+
+                })
+            ;
         };
     }
 })();

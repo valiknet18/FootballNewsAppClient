@@ -6,17 +6,27 @@
 
     CreateCommandCtrl.$inject = [
         '$scope',
-        '$mdDialog'
+        '$mdDialog',
+        'CommandsUtils'
     ];
 
     //Create Command Controller
-    function CreateCommandCtrl ($scope, $mdDialog) {
+    function CreateCommandCtrl ($scope, $mdDialog, CommandsUtils) {
         $scope.cancel = function () {
             $mdDialog.cancel();
         };
 
         $scope.answer = function(answer) {
-            $mdDialog.hide(answer);
+            CommandsUtils
+                .create(answer)
+                .then(function (response) {
+                    $mdDialog.hide(answer);
+
+                    alert('Команда успішно створена!')
+                }, function (error) {
+
+                })
+            ;
         };
     }
 })();

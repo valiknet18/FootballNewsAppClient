@@ -9,7 +9,7 @@
             <div layout layout-sm="column">
                 <md-input-container flex>
                     <label>Повне ім’я гравця</label>
-                    <input type="file" ng-model="member.full_name" placeholder="Placeholder text">
+                    <input ng-model="member.full_name">
                 </md-input-container>
             </div>
 
@@ -32,10 +32,19 @@
                 <label>Опис</label>
                 <input ng-model="member.description" />
             </md-input-container>
+
+            <md-input-container flex>
+                <label>Команда</label>
+                <md-select ng-model="member.command_id">
+                    <md-option ng-repeat="command in commands" value="{{ command.id }}">
+                        {{ command.title }}
+                    </md-option>
+                </md-select>
+            </md-input-container>
         </form>
     </md-content>
     <div class="md-actions" layout="row"><span flex></span>
         <md-button ng-click="cancel()"> Cancel</md-button>
-        <md-button ng-click="answer('useful')" class="md-primary">Save</md-button>
+        <md-button ng-click="answer(member)" class="md-primary">Save</md-button>
     </div>
 </md-dialog>

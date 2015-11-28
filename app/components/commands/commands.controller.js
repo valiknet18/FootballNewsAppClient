@@ -6,11 +6,26 @@
 
     CommandsCtrl.$inject = [
         '$scope',
-        '$mdDialog'
+        '$mdDialog',
+        '$state',
+        'CommandsUtils'
     ];
 
     //Commands Controller block
-    function CommandsCtrl ($scope, $mdDialog) {
+    function CommandsCtrl ($scope, $mdDialog, $state, CommandsUtils) {
+        CommandsUtils
+            .all()
+            .then(function (response) {
+                $scope.commands = response.data.data;
+            }, function (error) {
+
+            })
+        ;
+
+        $scope.go = function (state, id) {
+            $state.go(state, {id: id});
+        };
+
         $scope.showModal = function (ev) {
             $mdDialog.show({
                 controller: 'CreateCommandCtrl',

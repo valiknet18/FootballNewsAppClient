@@ -1,13 +1,13 @@
 <md-card flex-gt-sm="90" flex-gt-md="80">
     <md-card-content>
         <md-toolbar class="md-whiteframe-z1">
-            <h1 class="md-toolbar-tools">Новини</h1>
+            <h1 class="md-toolbar-tools">Новини по тегу: {{ tag.title }}</h1>
         </md-toolbar>
         <md-list>
-            <md-list-item ng-repeat="article in articles">
+            <md-list-item ng-repeat="article in tag.articles">
                 <md-item-content>
                     <div class="md-tile-content">
-                        <h3 ng-click="go('article', article.id)" class="link">
+                        <h3 ng-click="go(article.id)" class="link">
                             {{ article.title }}
                         </h3>
                         <p>
@@ -24,12 +24,3 @@
         </md-list>
     </md-card-content>
 </md-card>
-
-<div class="float-btn">
-    <md-button class="md-fab" aria-label="Добавить" ng-click="showModal($event)" layout-fill>
-        <md-tooltip>
-            Добавить
-        </md-tooltip>
-        <ng-md-icon icon="add"></ng-md-icon>
-    </md-button>
-</div>

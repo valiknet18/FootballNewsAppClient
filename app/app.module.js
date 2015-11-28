@@ -7,7 +7,7 @@
             'football.controllers',
             'ngFileUpload'
         ])
-        .constant("server_host", "http://localhost:8000")
+        .constant("server_host", "http://football.local")
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise("/");
 
@@ -18,7 +18,7 @@
                     templateUrl: "components/articles/articles.html"
                 })
                 .state("article", {
-                    url: "/articles/:slug",
+                    url: "/articles/:id",
                     controller: "ArticleCtrl",
                     templateUrl: "components/articles/article.html"
                 })
@@ -28,7 +28,7 @@
                     templateUrl: "components/commands/commands.html"
                 })
                 .state("command", {
-                    url: "/commands/:slug",
+                    url: "/commands/:id",
                     controller: "CommandCtrl",
                     templateUrl: "components/commands/command.html"
                 })
@@ -38,9 +38,14 @@
                     templateUrl: "components/members/members.html"
                 })
                 .state("member", {
-                    url: "/members/:slug",
+                    url: "/members/:id",
                     controller: "MemberCtrl",
                     templateUrl: "components/members/member.html"
+                })
+                .state("tag", {
+                    url: "/tags/:id",
+                    controller: "TagCtrl",
+                    templateUrl: "components/tags/tag.html"
                 })
             ;
         })
