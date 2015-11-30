@@ -7,15 +7,23 @@
     '$scope',
     '$mdDialog',
     '$state',
-    'CommandsUtils'
+    'CommandsUtils',
+    'ColorUtils'
   ];
 
   //Commands Controller block
-  function CommandsCtrl($scope, $mdDialog, $state, CommandsUtils) {
+  function CommandsCtrl($scope, $mdDialog, $state, CommandsUtils, ColorUtils) {
+    $scope.backgroundColor = function () {
+      for (var item in $scope.commands) {
+        $scope.commands[item].color = ColorUtils.get();
+      }
+    };
+
     CommandsUtils
         .all()
         .then(function (response) {
           $scope.commands = response.data.data;
+          $scope.backgroundColor();
         }, function (error) {
 
         });

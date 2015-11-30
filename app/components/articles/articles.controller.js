@@ -7,15 +7,24 @@
     '$scope',
     '$mdDialog',
     '$state',
-    'ArticlesUtils'
+    'ArticlesUtils',
+    'ColorUtils'
   ];
 
   //Block articles controller
-  function ArticlesCtrl($scope, $mdDialog, $state, ArticlesUtils) {
+  function ArticlesCtrl($scope, $mdDialog, $state, ArticlesUtils, ColorUtils) {
+
+    $scope.backgroundColor = function () {
+      for (var item in $scope.articles) {
+        $scope.articles[item].color = ColorUtils.get();
+      }
+    };
+
     ArticlesUtils
         .all()
         .then(function (response) {
           $scope.articles = response.data.data;
+          $scope.backgroundColor();
         }, function (error) {
           console.log(error);
         });

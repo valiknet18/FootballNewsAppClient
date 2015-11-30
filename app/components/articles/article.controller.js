@@ -7,15 +7,17 @@
     '$scope',
     '$state',
     '$stateParams',
-    'ArticlesUtils'
+    'ArticlesUtils',
+    'ColorUtils'
   ];
 
   //Current article block
-  function ArticleCtrl($scope, $state, $stateParams, ArticlesUtils) {
+  function ArticleCtrl($scope, $state, $stateParams, ArticlesUtils, ColorUtils) {
     ArticlesUtils
         .get($stateParams.id)
         .then(function (response) {
           $scope.article = response.data;
+          $scope.article.color = ColorUtils.get();
         }, function (error) {
           console.log(error);
         });

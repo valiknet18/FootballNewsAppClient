@@ -89,3 +89,7 @@ img.image {
 md-content.command, md-content.member {
   margin-top: 10px;
 }
+.content-container {
+  max-width: 950px;
+  margin-top: 10px;
+}

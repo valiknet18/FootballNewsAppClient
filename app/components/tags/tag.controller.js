@@ -8,14 +8,16 @@
     '$scope',
     '$state',
     '$stateParams',
-    'TagsUtils'
+    'TagsUtils',
+      'ColorUtils'
   ];
 
-  function TagCtrl($scope, $state, $stateParams, TagsUtils) {
+  function TagCtrl($scope, $state, $stateParams, TagsUtils,ColorUtils) {
     TagsUtils
         .get($stateParams.id)
         .then(function (response) {
           $scope.tag = response.data;
+          $scope.tag.color = ColorUtils.get();
         }, function (error) {
 
         });

@@ -7,14 +7,22 @@
     '$scope',
     '$state',
     '$mdDialog',
-    'MembersUtils'
+    'MembersUtils',
+    'ColorUtils'
   ];
 
-  function MembersCtrl($scope, $state, $mdDialog, MembersUtils) {
+  function MembersCtrl($scope, $state, $mdDialog, MembersUtils, ColorUtils) {
+    $scope.backgroundColor = function () {
+      for (var item in $scope.members) {
+        $scope.members[item].color = ColorUtils.get();
+      }
+    };
+
     MembersUtils
         .all()
         .then(function (response) {
-          $scope.members = response.data.data
+          $scope.members = response.data.data;
+          $scope.backgroundColor();
         }, function (error) {
 
         });

@@ -1,24 +1,19 @@
-<md-card flex-gt-sm="90" flex-gt-md="80">
-  <md-card-content>
-    <md-toolbar class="md-whiteframe-z1">
-      <h1 class="md-toolbar-tools">Команда: {{ command.title }}</h1>
-    </md-toolbar>
+<md-whiteframe class="md-whiteframe-1dp"
+               layout="column" layout-align="center center"
+               layout-margin layout-padding
+               ng-style="{ 'background': command.color }">
+  <div>
+    <h1 class="md-toolbar-tools">Команда: {{ command.title }}</h1>
+  </div>
+  <div class="left">
+    <img ng-src="{{ command.logo }}" class="left"/>
+  </div>
+  <div layout-fill>
     <md-content class="command">
-      <div class="left">
-        <img ng-src="{{ command.logo }}" class="left"/>
-      </div>
-
-      <div class="text-command">
-        <p>{{ command.description }}</p>
-      </div>
-
-      <div class="clearfix">
-
-      </div>
-
       <md-list>
         <md-subheader class="md-no-sticky">Учасники</md-subheader>
-        <md-list-item class="md-3-line" ng-repeat="member in command.members">
+        <md-list-item class="md-3-line" ng-repeat="member in command.members"
+                      ng-style="{ 'background': command.colorList }">
           <img ng-src="{{member.photo}}" class="md-avatar" alt="{{member.full_name}}"/>
 
           <div class="md-list-item-text" layout="column">
@@ -30,5 +25,5 @@
         </md-list-item>
       </md-list>
     </md-content>
-  </md-card-content>
-</md-card>
+  </div>
+</md-whiteframe>

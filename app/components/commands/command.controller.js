@@ -7,15 +7,18 @@
     '$scope',
     '$state',
     '$stateParams',
-    'CommandsUtils'
+    'CommandsUtils',
+    'ColorUtils'
   ];
 
   //Command Ctrl block
-  function CommandCtrl($scope, $state, $stateParams, CommandsUtils) {
+  function CommandCtrl($scope, $state, $stateParams, CommandsUtils, ColorUtils) {
     CommandsUtils
         .get($stateParams.id)
         .then(function (response) {
           $scope.command = response.data;
+          $scope.command.color = ColorUtils.get();
+          $scope.command.colorList = ColorUtils.get();
         }, function (error) {
 
         });

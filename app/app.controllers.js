@@ -4,6 +4,7 @@
   angular.module('football.service.members', []);
   angular.module('football.service.tags', []);
   angular.module('football.menu', []);
+  angular.module('football.service.color', []);
 
   angular
       .module('football.controller.articles', [
@@ -28,6 +29,7 @@
         'football.controller.commands',
         'football.controller.members',
         'football.controller.tags',
-        'football.menu'
+        'football.menu',
+        'football.service.color'
       ]);
 })();

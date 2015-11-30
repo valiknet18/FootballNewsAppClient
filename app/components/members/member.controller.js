@@ -7,14 +7,16 @@
     '$scope',
     '$state',
     '$stateParams',
-    'MembersUtils'
+    'MembersUtils',
+      'ColorUtils'
   ];
 
-  function MemberCtrl($scope, $state, $stateParams, MembersUtils) {
+  function MemberCtrl($scope, $state, $stateParams, MembersUtils, ColorUtils) {
     MembersUtils
         .get($stateParams.id)
         .then(function (response) {
           $scope.member = response.data;
+          $scope.member.color = ColorUtils.get();
         }, function (error) {
 
         });
