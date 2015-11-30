@@ -1,57 +1,63 @@
 (function () {
-    angular
-        .module('football.controller.articles')
-        .controller('ArticlesCtrl', ArticlesCtrl)
-    ;
+  angular
+      .module('football.controller.articles')
+      .controller('ArticlesCtrl', ArticlesCtrl);
 
-    ArticlesCtrl.$inject = [
-        '$scope',
-        '$mdDialog',
-        '$state',
-        'ArticlesUtils'
-    ];
+  ArticlesCtrl.$inject = [
+    '$scope',
+    '$mdDialog',
+    '$state',
+    'ArticlesUtils',
+    'ColorUtils'
+  ];
 
-    //Block articles controller
-    function ArticlesCtrl ($scope, $mdDialog, $state, ArticlesUtils) {
-        ArticlesUtils
-            .all()
-            .then(function (response) {
-                $scope.articles = response.data.data;
-            }, function (error) {
-                console.log(error);
-            })
-        ;
+  //Block articles controller
+  function ArticlesCtrl($scope, $mdDialog, $state, ArticlesUtils, ColorUtils) {
 
-        $scope.go = function (state, id) {
-            $state.go(state, {id: id});
-        };
+    $scope.backgroundColor = function () {
+      for (var item in $scope.articles) {
+        $scope.articles[item].color = ColorUtils.get();
+      }
+    };
 
-        $scope.showModal = function (ev) {
-            $mdDialog.show({
-                    controller: 'CreateArticleCtrl',
-                    templateUrl: 'components/articles/create-article.html',
-                    targetEvent: ev
-                })
-                .then(function (answer) {
-                    console.log(answer);
+    ArticlesUtils
+        .all()
+        .then(function (response) {
+          $scope.articles = response.data.data;
+          $scope.backgroundColor();
+        }, function (error) {
+          console.log(error);
+        });
 
-                    tags = [];
+    $scope.go = function (state, id) {
+      $state.go(state, {id: id});
+    };
 
-                    for (var i = 0; i < answer.tags.length; i++) {
-                        tag = {
-                            title: answer.tags[i]
-                        };
+    $scope.showModal = function (ev) {
+      $mdDialog.show({
+            controller: 'CreateArticleCtrl',
+            templateUrl: 'components/articles/create-article.html',
+            targetEvent: ev
+          })
+          .then(function (answer) {
+            console.log(answer);
 
-                        tags.push(tag);
-                    }
+            tags = [];
 
-                    answer.tags = tags;
+            for (var i = 0; i < answer.tags.length; i++) {
+              tag = {
+                title: answer.tags[i]
+              };
 
-                    $scope.articles.splice(0, 0, answer)
-                }, function () {
+              tags.push(tag);
+            }
 
-                })
-            ;
-        }
+            answer.tags = tags;
+
+            $scope.articles.splice(0, 0, answer)
+          }, function () {
+
+          });
     }
+  }
 })();

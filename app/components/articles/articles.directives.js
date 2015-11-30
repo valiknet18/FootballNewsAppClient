@@ -1,5 +1,4 @@
 (function () {
-    angular
-        .module('football.directive.index', [])
-    ;
+  angular
+      .module('football.directive.index', []);
 })();
