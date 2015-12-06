@@ -93,3 +93,10 @@ md-content.command, md-content.member {
   max-width: 950px;
   margin-top: 10px;
 }
+body {
+  background-image: url('/assets/images/123.jpg');
+}
+
+.client-menu-general {
+ background-color: #fff;
+}
