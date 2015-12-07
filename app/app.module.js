@@ -7,7 +7,7 @@
         'football.controllers',
         'ngFileUpload'
       ])
-      .constant("server_host", "http://a-avia.pp.ua/")
+      .constant("server_host", "http://intertech-app2.pp.ua/")
       .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise("/");
 
